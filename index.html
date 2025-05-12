@@ -257,6 +257,9 @@
       .max-w-md {
         max-width: 28rem;
       }
+      .max-w-3xl {
+        max-width: 48rem;
+      }
       .md\:w-40 {
       }
       .md\:h-40 {
@@ -332,6 +335,9 @@
       .leading-relaxed {
         line-height: 1.625;
       }
+      .text-left {
+        text-align: left;
+      }
 
       /* Layout */
       .flex {
@@ -368,6 +374,9 @@
       .md\:grid-cols-3 {
       }
       @media (min-width: 640px) {
+        .md\:grid-cols-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
         .sm\:grid-cols-2 {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -624,9 +633,20 @@
               "bg-gradient-to-br from-gray-900 via-cyan-950 to-gray-900 min-h-screen font-sans antialiased",
           },
           h(Navbar, { setPage }),
-          page === "home"
-            ? [h(Hero, { setPage }), h(Projects), h(Footer, { setPage })]
-            : h(Contact, { setPage })
+          page === "home" ? [
+            h(Hero, { setPage }),
+            h(Projects),
+            h(Footer, { setPage })
+          ] : page === "contact" ? [
+            h(Contact, { setPage }),
+            h(Footer, { setPage })
+          ] : page === "privacy" ? [
+            h(PrivacyPolicy, { setPage }),
+            h(Footer, { setPage })
+          ] : [
+            h(TermsOfUse, { setPage }),
+            h(Footer, { setPage })
+          ]
         );
       };
 
@@ -981,6 +1001,208 @@
           )
         );
 
+      // Privacy Policy Component
+      const PrivacyPolicy = ({ setPage }) =>
+        h(
+          "section",
+          {
+            className:
+              "min-h-screen flex flex-col justify-center items-center px-6 py-20 text-white animate-fadeIn",
+          },
+          h(
+            "div",
+            { className: "max-w-3xl w-full" },
+            h(
+              "h2",
+              { className: "text-4xl font-bold mb-12 text-center tracking-tight animate-slideIn" },
+              "Privacy Policy"
+            ),
+            h(
+              "div",
+              { className: "bg-gray-800/80 rounded-2xl p-8 shadow-lg space-y-4 text-left" },
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Introduction"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "This Privacy Policy explains how Ravi Shankar collects, uses, and protects your personal information when you use this portfolio website."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Data Collection"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "I may collect personal information such as your name, email address, and message content when you submit the contact form on this website."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Data Usage"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "The information collected is used solely to respond to your inquiries or messages. I do not use your data for marketing purposes."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Data Sharing"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "I do not share your personal information with third parties, except as required by law."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Cookies"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "This website does not currently use cookies. If analytics are added in the future, this policy will be updated accordingly."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Contact"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "If you have any questions about this Privacy Policy, please contact me at ",
+                h(
+                  "a",
+                  {
+                    href: "mailto:rs2583192@gmail.com",
+                    className: "text-cyan-400 hover:underline",
+                  },
+                  "rs2583192@gmail.com"
+                ),
+                "."
+              )
+            ),
+            h(
+              "div",
+              { className: "mt-8 text-center" },
+              h(
+                "a",
+                {
+                  href: "#",
+                  onClick: () => setPage("home"),
+                  className:
+                    "px-8 py-3 bg-transparent border-2 border-cyan-600 text-cyan-400 font-semibold rounded hover:bg-cyan-600 hover:text-white transition-all duration-300 transform hover:scale-105",
+                },
+                "Back to Home"
+              )
+            )
+          )
+        );
+
+      // Terms of Use Component
+      const TermsOfUse = ({ setPage }) =>
+        h(
+          "section",
+          {
+            className:
+              "min-h-screen flex flex-col justify-center items-center px-6 py-20 text-white animate-fadeIn",
+          },
+          h(
+            "div",
+            { className: "max-w-3xl w-full" },
+            h(
+              "h2",
+              { className: "text-4xl font-bold mb-12 text-center tracking-tight animate-slideIn" },
+              "Terms of Use"
+            ),
+            h(
+              "div",
+              { className: "bg-gray-800/80 rounded-2xl p-8 shadow-lg space-y-4 text-left" },
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Acceptance of Terms"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "By accessing and using this website, you agree to be bound by these Terms of Use."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Use of Content"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "All content on this website, including project descriptions, images, and designs, is the intellectual property of Ravi Shankar. You may not reproduce, distribute, or use this content without prior written permission."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Prohibited Activities"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "You may not use this website for any unlawful activities, including but not limited to copying content, attempting to access unauthorized areas, or using the site to distribute malicious software."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Disclaimers"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "This website is provided 'as is' without warranties of any kind. I am not liable for any damages arising from the use of this site."
+              ),
+              h(
+                "h3",
+                { className: "text-xl font-semibold text-cyan-400" },
+                "Contact"
+              ),
+              h(
+                "p",
+                { className: "text-gray-300 leading-relaxed" },
+                "For questions about these Terms of Use, please contact me at ",
+                h(
+                  "a",
+                  {
+                    href: "mailto:rs2583192@gmail.com",
+                    className: "text-cyan-400 hover:underline",
+                  },
+                  "rs2583192@gmail.com"
+                ),
+                "."
+              )
+            ),
+            h(
+              "div",
+              { className: "mt-8 text-center" },
+              h(
+                "a",
+                {
+                  href: "#",
+                  onClick: () => setPage("home"),
+                  className:
+                    "px-8 py-3 bg-transparent border-2 border-cyan-600 text-cyan-400 font-semibold rounded hover:bg-cyan-600 hover:text-white transition-all duration-300 transform hover:scale-105",
+                },
+                "Back to Home"
+              )
+            )
+          )
+        );
+
       // Footer Component
       const Footer = ({ setPage }) =>
         h(
@@ -1106,7 +1328,8 @@
               h(
                 "a",
                 {
-                  href: "#privacy",
+                  href: "#",
+                  onClick: () => setPage("privacy"),
                   className:
                     "text-gray-400 hover:text-cyan-400 transition-colors duration-300",
                 },
@@ -1119,7 +1342,8 @@
               h(
                 "a",
                 {
-                  href: "#terms",
+                  href: "#",
+                  onClick: () => setPage("terms"),
                   className:
                     "text-gray-400 hover:text-cyan-400 transition-colors duration-300",
                 },
